@@ -77,7 +77,13 @@ export default function TodoItemModal({
 
   const submitForm = e => {
     e.preventDefault();
-    if (onFormSend) onFormSend({ _id: todoItem._id, content, deadline });
+    if (onFormSend)
+      onFormSend({
+        _id: todoItem._id,
+        content,
+        deadline,
+        status: todoItem.status
+      });
     setContent("");
     setDeadline(new Date());
   };

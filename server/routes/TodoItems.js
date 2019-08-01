@@ -25,7 +25,9 @@ router.post("/updateItem", async (req, res) => {
   const { _id, status, content, deadline } = req.body;
 
   const item = await TodoItem.findOne({ _id });
-  item.status = status;
+  if (status) {
+    item.status = status;
+  }
   item.content = content;
   item.deadline = deadline;
   item.updatedDate = new Date();
